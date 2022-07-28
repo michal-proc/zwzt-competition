@@ -1,0 +1,39 @@
+{{> admin/admin-navbar}}
+
+<div class="container">
+  <div class="col-12 my-3">
+    <h4>Dodaj zawartość</h4>
+    <form id="add_article" class="d-flex w-50" action="/admin/article" method="POST">
+      <input type="text" name="title" class="form-control mb-0" placeholder="Tytuł artykułu" />
+      <input type="submit" class="btn btn-primary" value="Utwórz artykuł">
+    </form>
+  </div>
+  <div class="col-md-12 row flex-wrap rounded my-3">
+    {{#each articles}}
+      {{> admin/article-list-item this}}
+    {{/each}}
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.button-delete-article').forEach(button => {
+    button.addEventListener('click', () => {
+      const prompt = confirm("Czy na pewno chcesz usunąć?");
+      const id = button.getAttribute('data-id');
+      if (prompt) {
+        fetch('/admin/article/delete', {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            id: id
+          })
+        })
+        .then(res => {
+          location.href = "/admin";
+        })
+      }
+    })
+  })
+</script>

@@ -1,0 +1,101 @@
+{{> navbar}}
+
+<div class="content">
+    <div class="hero interactive-hero">
+    <img src="/images/herosection/comet.png" class="comet">
+    <div id="hero-wrapper" class="container d-flex flex-wrap h-100">
+        <div class="col-12 col-lg-6 blob-bg d-flex justify-content-center flex-column" data-aos="fade-right">
+            <h1 class="h2 mb-0 text-white hero-maintext">LSDrugs
+            </h1>
+            <p class="hero-subtext">
+                <span class="text-primary">Redukcja szkód</span>
+                związanych z używaniem substancji psychoaktywnych.
+            </p>
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="blob-svg">
+                <path fill="#03A66A"
+                    d="M41.6,-47.3C48,-44.1,43.3,-25.5,43,-10.1C42.7,5.2,46.7,17.2,44.4,29.9C42.2,42.5,33.6,55.7,22.8,57.3C12,59,-1.2,49.1,-19.7,45.9C-38.3,42.7,-62.3,46.3,-73.4,37.4C-84.5,28.5,-82.6,7.1,-74.2,-8.3C-65.8,-23.7,-50.8,-33.2,-37.3,-35.2C-23.9,-37.1,-11.9,-31.6,2.8,-34.9C17.6,-38.3,35.1,-50.5,41.6,-47.3Z"
+                    transform="translate(100 100)" />
+            </svg>
+        </div>
+        <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center brain-column">
+            <img src="/images/herosection/redbrain.png" data-aos="fade-left" class="red-brain">
+        </div>
+        <img src="/images/herosection/moon-surface-top.png" alt="" class="moon-surface-top" data-aos="fade-up">
+    </div>
+</div>
+
+<main>
+    <section class="bg-light mainpage-section moon-bg">
+        <div class="container">
+            <h2 class="w-100 text-center" data-aos="fade-right">Najnowsze publikacje</h2>
+            <div class="row" data-aos="fade-right">
+                {{#each articles}}
+                {{> article-tile this}}
+                {{/each}}
+                <div class="d-flex justify-content-center col-12">
+                    <a class="btn btn-primary" href="/category/substancje">Zobacz więcej</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="desc-section justify-content-between d-flex flex-column">
+        <img src="/images/herosection/moon-surface-bottom.png" class="moon-surface-bottom">
+        <div class="bg-blue pt-5">
+            <div class="container d-flex align-items-center flex-column desc-text" data-aos="fade-in">
+                <h3 class="text-center text-white mb-3">Obiektywna wiedza na temat substancji psychoaktywnych jest naszym
+                    celem.
+                </h3>
+                <p class="text-white text-center col-8">
+                    Jesteśmy LSDrugs i postanowiliśmy stworzyć projekt społeczny, w
+                    którym
+                    chcemy przybliżyć wam temat narkotyków i redukcji szkód wynikających z ich używania.
+                    <br/><br/>
+                    Genezą projektu jest niepokój wywołany małą ilością obiektywnych źródeł wiedzy oraz osobistymi doświadczeniami płynącymi z naszego środowiska.
+                </p>
+                <a href="/category/substancje" class="btn btn-light">Sprawdź</a>
+            </div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="waves" viewBox="0 0 1440 100">
+            <path fill="#012840"
+                d="M0,17.42l48,5.49C96,28.2,192,39.49,288,55.75c96,16.58,192,38.13,288,43.78s192-5.65,288-21.91C960,61,1056,39.49,1152,33.84s192,5.65,240,10.93l48,5.49V1H0Z"
+                transform="translate(0 -1)" />
+        </svg>
+    </section>
+
+    <section class="contact-form mainpage-section">
+        <div class="container h-100" id="contact">
+            <div class="row h-100 align-items-center">
+                <div class="col-md-6 flex-both flex-column" data-aos="fade-right">
+                    <h2 class="mb-1">⭐ Chcesz nam coś przekazać? <br />Napisz do nas!</h2>
+                    <p>
+                        Podoba Ci się to, co robimy, masz jakieś sugestie co do pojawiającej się treści? <br />A może
+                        masz jakiś pomysł na artykuł, który chciałbyś zobaczyć na stronie, lub nawet go z nami napisać?
+                        <br /><br />
+                        Skontaktuj się z nami, używając formularza obok, będziemy wniebowzięci!
+                    </p>
+                    <h2 class="mb-1">Nie udzielamy porad!</h2>
+                    <p>
+                        Jeżeli potrzebujesz pomocy lub rady zapraszamy na <a href="https://discord.com/invite/Svg4rHwzDS" target="_blank">serwer</a> Discord <a href="https://www.sin.org.pl">SIN-u</a>.
+                    </p>
+                </div>
+                <form method="POST" class="col-md-6 flex-both-column contact-form-send" autocomplete="off"
+                    data-aos="fade-left">
+                    <h3>Formularz kontaktowy</h3>
+                    <div class="field-wrapper">
+                        <input type="text" name="author" class="form-control mb-3" placeholder="Pseudonim / podmiot">
+                    </div>
+                    <div class="field-wrapper">
+                        <textarea name="message" id="message" class="form-control mb-3" rows="4" noresize
+                            placeholder="Treść wiadomości"></textarea>
+                    </div>
+                    <input type="text" class="xd" name="xd">
+                    <input type="submit" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+</div>
+
+{{> footer}}

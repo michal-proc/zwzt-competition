@@ -1,0 +1,83 @@
+<div class="main-ep">
+
+</div>
+<div class="main-bg-ep">
+    <div class="mainpagediv-ep">
+        <div class="field-info scale-field-ep" style="display: none;">Strona główna</div>
+        <a href="/"><img class="mainpage planet-ep" src="/images/mainplanet.png" alt="MainPage"></a>
+    </div>
+    <div class="subpagediv-ep">
+        <div class="field-info scale-field-ep" style="display: none;">Substancje</div>
+        <a href="/category/substancje"><img class="subpage planet-ep" src="/images/subplanet.png"
+                alt="SubstationsPage"></a>
+    </div>
+    <div class="mixpagediv-ep">
+        <div class="field-info scale-field-ep" style="display: none;">Mikser</div>
+        <a href="/mixer"><img class="mixpage planet-ep" src="/images/mixplanet.png" alt="MixerPage"></a>
+    </div>
+    <img class="zwzt-ep" src="/images/zwzt.png" alt="">
+    <div class="logo-ep">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#03A66A"
+                d="M41.8,-49.1C56.1,-37.9,70.7,-26.5,74.2,-12.2C77.8,2.1,70.3,19.1,59,29.7C47.7,40.3,32.7,44.4,17.5,51.4C2.3,58.4,-13.1,68.3,-29.7,68.1C-46.4,68,-64.4,57.7,-75.1,42C-85.9,26.2,-89.6,4.9,-84.2,-13C-78.9,-31,-64.6,-45.5,-49.1,-56.5C-33.6,-67.4,-16.8,-74.9,-1.5,-73.1C13.8,-71.3,27.6,-60.3,41.8,-49.1Z"
+                transform="translate(100 100)" />
+        </svg>
+        <div class="logo-txt-ep">
+            <h1><b>Tu nic nie ma</b></h1>
+            <h3><b>Poszukaj na innej planecie</b></h3>
+        </div>
+    </div>
+</div>
+
+<script>
+    const colors = ["#03a66a", "#f2b022", "#f22233", "#ececec"]
+    const animations = ["moving-star-slow", "moving-star-fast", "moving-star-medium"]
+    const starAmount = 30
+
+
+    document.querySelector('.mainpage').addEventListener("mouseover", function (e) {
+        document.querySelector('.mainpagediv-ep > .field-info').style.display = 'flex'
+    })
+
+    document.querySelector('.mainpage').addEventListener("mouseout", function (e) {
+        document.querySelector('.mainpagediv-ep > .field-info').style.display = 'none'
+    })
+
+    document.querySelector('.subpage').addEventListener("mouseover", function (e) {
+        document.querySelector('.subpagediv-ep > .field-info').style.display = 'flex'
+    })
+
+    document.querySelector('.subpage').addEventListener("mouseout", function (e) {
+        document.querySelector('.subpagediv-ep > .field-info').style.display = 'none'
+    })
+
+    document.querySelector('.mixpage').addEventListener("mouseover", function (e) {
+        document.querySelector('.mixpagediv-ep > .field-info').style.display = 'flex'
+    })
+
+    document.querySelector('.mixpage').addEventListener("mouseout", function (e) {
+        document.querySelector('.mixpagediv-ep > .field-info').style.display = 'none'
+    })
+
+    //Generowanie gwiazdek
+    for (let c = 0; c < starAmount; c++) {
+        let randomStar = document.createElement('div')
+        let size = Math.floor(Math.random() * 10 + 1)
+        randomStar.style.width = size + "px"
+        randomStar.style.height = size + "px"
+        randomStar.style.borderRadius = size / 2 + "px"
+        randomStar.style.position = "absolute"
+        randomStar.style.top = Math.floor(Math.random() * 95) + "vh"
+        randomStar.style.left = Math.floor(Math.random() * 95) + "vw"
+        randomStar.style.backgroundColor = colors[Math.floor(Math.random() * 4)]
+        randomStar.setAttribute('class', animations[Math.floor(Math.random() * 3)])
+        document.querySelector('.main-ep').appendChild(randomStar)
+    }
+
+    function displayPlanetBadge(element, message) {
+        const alert = document.createElement('div');
+        alert.classList.add('field-info');
+        alert.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+        element.appendChild(alert);
+    }
+</script>

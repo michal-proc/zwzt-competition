@@ -1,0 +1,153 @@
+
+@import '../utils/mixins';
+$danger: #F22233;
+$primary: #012326;
+$secondary: #027353;
+$success: #03A66A;
+$blue: #012840;
+$white: #eee;
+$dark: #121212;
+$light: #E8E8E8;
+
+$body-bg: #fff;
+$body-color: #121212;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "danger": $danger,
+  "light": $light,
+  "white": #fff,
+  "blue": $blue
+);
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+
+body{
+    min-height: 100vh;
+}
+
+.form-control{
+    margin-bottom: 10px;
+    padding: .5rem 1rem;
+
+    &:focus{
+        border: 1px solid;
+        outline: none;
+    }
+}
+
+.login-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    min-width: 300px;
+    padding: 1rem;
+}
+
+.btn{
+    color: white;
+}
+
+.icon-in-circle{
+    border-radius: 50%;
+    @include flex-both();
+    width: 50px;
+    height: 50px;
+    color: white;
+
+    i{
+        font-size: 30px;
+    }
+
+    &.smaller{
+        width: 30px;
+        height: 30px;
+        i{
+            font-size: 15px;
+        }
+    }
+}
+
+a{
+    text-decoration: none;
+}
+
+.navbar-brand img{
+    max-height: 55px;
+}
+
+@keyframes jump{
+    0%{
+        transform: translateY(0px);
+    }50%{
+        transform: translateY(-10px);
+    }100%{
+        transform: translateY(0px);
+    }
+}
+
+.file-drop{
+    border-radius: 25px;
+    width: 100%;
+    height: 100%;
+    @include flex-both();
+    border: 2px dashed #bbb;
+    transition: .4s;
+
+    background-size: cover;
+
+    i{
+        color: #bbb;
+        font-size: 3rem;
+        pointer-events: none;
+    }
+}
+
+.file-over{
+    i{
+        animation: jump 3s infinite;
+        color: #333;
+        transition: .4s;
+    }
+    transition: .4s;
+
+    border-color: #333;
+}
+
+.top-1 {
+    position: relative;
+    top: -5px;
+}
+
+.login-part, .image-part {
+    height: 100vh;
+}
+
+.login-part {
+    background: white;
+    box-shadow: 2px 2px 25px rgba(0,0,0,.4);
+}
+
+.image-part {
+    background-image: linear-gradient(130deg, #012326 ,rgba(242, 34, 51, .3));
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.partners {
+    display: flex;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+    overflow: hidden;
+    margin: 10px;
+
+    img {
+        max-height: 90px;
+    }
+}

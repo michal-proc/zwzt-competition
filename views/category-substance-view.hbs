@@ -1,0 +1,61 @@
+{{> navbar}}
+<div class="category-image-wrapper">
+    <img src="/uploads/{{categoryRaw}}_category_image.png" alt="{{name}}">
+    <h1 class="category-name">
+        {{name}}
+    </h1>
+</div>
+<main class="container">
+
+    <nav class="mb-3">
+        {{#each substancesGroups}}
+        <button class="btn btn-primary filter-button mb-2 me-1"
+            data-phrase="{{this.substanceGroup}}">{{this.substanceGroup}}</button>
+        {{/each}}
+        <button class="btn btn-light reset mb-2 me-1">Resetuj</button>
+    </nav>
+
+    <div class="row flex-wrap">
+        {{#each articles}}
+        {{> article-tile this}}
+        {{/each}}
+    </div>
+</main>
+{{> footer}}
+
+<script>
+    const articles = document.querySelectorAll('.article-tile-wrapper');
+
+    document.querySelectorAll('.filter-button').forEach(button => {
+        button.addEventListener('click', function () {
+            document.querySelectorAll('.filter-button').forEach(button => {
+                button.classList.add('btn-primary');
+                button.classList.remove('btn-secondary');
+            })
+            button.classList.remove('btn-outline-primary');
+            button.classList.add('btn-secondary');
+
+
+            const phrase = this.getAttribute('data-phrase');
+
+            articles.forEach(art => {
+                if (art.getAttribute('data-substance-group').includes(phrase)) {
+                    art.style.display = 'block';
+                } else {
+                    art.style.display = 'none';
+                }
+            })
+        })
+    })
+
+    document.querySelector('.reset').addEventListener('click', () => {
+        document.querySelectorAll('.filter-button').forEach(button => {
+            button.classList.add('btn-primary');
+            button.classList.remove('btn-secondary');
+        })
+
+        articles.forEach(art => {
+            art.style.display = 'block';
+        })
+    })
+</script>

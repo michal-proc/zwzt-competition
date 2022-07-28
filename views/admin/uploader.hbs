@@ -1,0 +1,43 @@
+{{> admin/admin-navbar}}
+
+
+<div class="container">
+    <div class="shadow rounded my-3 p-3">
+        <h2>Wgraj plik</h2>
+        <form action="/admin/uploader/uploadImage" method="POST" enctype="multipart/form-data" class="row"> 
+            <div class="col-6 col-md-4">
+                <input type="file" name="file" class="form-control border-0"> 
+            </div>
+            <div class="col-6 col-md-4">
+                <select name="dir" class="form-select col-6 col-md-4">
+                    <option value="articles">Articles</option>
+                    <option value="/">/</option>
+                    <option value="authors">Authors</option>
+                </select>
+            </div>
+            <div class="col-6 col-md-4">
+                <input type="submit" class="form-control">
+            </div>
+        </form>
+    </div>
+    {{#each folders}}
+        <div class="p-3 my-3 rounded shadow">
+            <h4>Folder: {{this.folder}}</h4>
+            <div class="row flex-wrap">
+            {{#each this.files}}
+                <div class="col-12 col-md-6">
+                    <form action="/admin/uploader/changeFile" method="POST" class="d-flex p-1 align-items-center">
+                        <a href="/uploads/{{../this.folder}}/{{this}}" class="p-1">
+                            <img src="/uploads/{{../this.folder}}/{{this}}" style="max-width: 40px; width: 100%; height: auto;" class="rounded me-1"/>
+                        </a>
+                        <input type="hidden" value="{{../this.folder}}/{{this}}" name="old_name">
+                        <input type="text" value="{{../this.folder}}/{{this}}" name="name" class="form-control">
+                        <button class="btn btn-link text-primary" type="submit" name="action" value="delete">USUŃ</button>
+                        <button class="btn btn-link text-primary" type="submit" name="action" value="edit">EDYTUJ</button>
+                    </form>
+                </div>
+            {{/each}}
+            </div>
+        </div>
+    {{/each}}
+</div>

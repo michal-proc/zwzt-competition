@@ -1,0 +1,71 @@
+
+@import '../utils/mixins';
+
+$danger: #F22233;
+$primary: #012326;
+$secondary: #027353;
+$success: #03A66A;
+$blue: #012840;
+$white: #eee;
+$dark: #121212;
+$light: #E8E8E8;
+
+$body-bg: #fff;
+$body-color: #121212;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "danger": $danger,
+  "light": $light,
+  "white": #fff,
+  "blue": $blue
+);
+
+//BOOTSTRAP
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+@font-face {
+  font-family: "Quicksand";
+  src: url('../../fonts/Quicksand/Quicksand.ttf');
+}
+
+@import 'article.scss';
+@import 'header.scss';
+@import 'mainpage.scss';
+@import 'mixer.scss';
+@import 'error_page.scss';
+@import 'wip_page.scss';
+@import 'cookies.scss';
+
+body{
+    overflow-x: hidden;
+    font-family: "Quicksand";
+    user-select: none;
+}
+
+.font-quicksand{
+    font-family: "Quicksand";
+}
+
+ul, ol {
+  list-style-type: none;
+}
+
+ul, ol {
+  li {
+    &:before {
+      content: '> ';
+      font-weight: 700;
+      color: $secondary;
+    }
+  }
+}
+
+.article-content {
+  h2 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+}

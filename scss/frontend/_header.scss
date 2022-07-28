@@ -1,0 +1,256 @@
+body{
+    margin: 0;
+    padding: 0;
+    transition: .4s;
+    box-sizing: border-box;
+}
+
+.nav{
+    box-shadow: 0 0 15px rgba(0,0,0,.1);
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 2000;
+    height: 72px;
+    transition: .2s;
+
+    &.extended{
+        height: 144px;
+    }
+}
+
+.navbar-brand{
+    font-family: 'Quicksand';
+    font-weight: 700;
+    flex: 1;
+    letter-spacing: 0.7px;
+}
+
+.navbar-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.icon-bar{
+    width: 60%;
+    height: 2px;
+    background: $dark;
+    position: absolute;
+    transition: transform .4s;
+
+    &:nth-child(1){
+        top: 7px;
+    }
+
+    &:nth-child(2){
+        top: 13px;
+    }
+
+    &:nth-child(3){
+        top: 19px;
+    }
+}
+
+.toggle-sidebar{
+    width: 30px;
+    height: 30px;
+    @include flex-both();
+    flex-direction: column;
+    position: relative;
+    padding: 0;
+
+    &.toggled{
+        .icon-bar:nth-child(1){
+            transform: rotate(45deg);
+            transition: transform .4s;
+            top: 13px;
+        }
+        .icon-bar:nth-child(2){
+            display: none;
+        }
+        .icon-bar:nth-child(3){
+            transform: rotate(-45deg);
+            transition: transform .4s;
+            top: 13px;
+        }
+    }
+}
+
+.sidebar{
+    background: transparent;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 100%;
+    @include flex-both();
+    flex-direction: column;
+    justify-content: space-between;
+    transition: .4s;
+    z-index: 1000;
+    left: 100%;
+    pointer-events: none;
+
+    &.swiped{
+        background-color: $primary;
+        transition: .4s ease;
+        left: 0%;
+    }
+}
+
+@media (min-width: 625px) {
+    .sidebar {
+        left: calc(100% - 50px);
+        width: 250px;
+
+        &.swiped {
+            left: calc(100% - 250px);
+            pointer-events: all;
+        }
+    }
+}
+
+.sidebar-item{
+    display: flex;
+    border-radius: 3px;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 7px 0;
+
+    &:hover{
+        background-color: white;
+        transition: .4s;
+        box-shadow: 0 0 25px rgba(0,0,0,.1);
+
+        .sidebar-item-image i , .sidebar-item-text{
+            color: #444;
+        }
+
+    }
+
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+.sidebar-item-image{
+    width: 50px;
+    height: 50px;
+    @include flex-both();
+    padding-left: 10px;
+
+    i{
+        color: #aaa;
+        font-size: 1.2rem;
+    }
+}
+
+.sidebar-item-text{
+    font-size: 1rem;
+    color: #eee;
+    height: 50px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-family: "Quicksand";
+}
+
+.hero{
+    height: 500px;
+    width: 100%;
+}
+
+.partner-img{
+    position: absolute;
+    max-width: 70px;
+    right: 0;
+}
+
+.sidebar-logo{
+    color: white;
+    font-family: 'Quicksand';
+    font-size: 1.6rem;
+    text-align: center;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.sidebar-contact{
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    li{
+        font-size: .6rem;
+        margin: 3px 0;
+    }
+
+    a{
+        color: #999;
+        text-decoration: none;
+    }
+}
+
+.sidebar-form{
+    margin-left: 50px;
+    width:100%;
+}
+
+.search-form{
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: .2s;
+
+    &.visible{
+        width: auto;
+        opacity: 1;
+    }
+}
+
+@media (max-width: 600px){
+    .search-form{
+        order: 3;
+        width: 100%;
+
+        &.visible{
+            width: 100%
+        }
+    }
+}
+
+.search-scope{
+    cursor: pointer;
+}
+
+.mixer .nav {
+    position: static;
+}
+
+.sidebar .toggle-sidebar {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    .icon-bar{
+        background-color: white;
+    }
+}
+
+.sidebar:not(.swiped){
+    .sidebar-items {
+        background-color: white;
+        box-shadow: 0 0 15px rgba(0,0,0,0.4);
+        border-radius: .25rem;
+    }
+}

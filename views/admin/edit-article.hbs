@@ -1,0 +1,141 @@
+{{> admin/admin-navbar}}
+
+<div class="container">
+    <form method="POST" action="/admin/article" class="mb-5">
+        <input type="hidden" value="{{article.id}}" name="id" />
+        <div class="row py-3">
+            <div class="my-3 my-md-0 col-md-4 d-flex flex-column">
+                <div class="file-drop bg-light p-5 mb-3" target-id="artImg"  style="background-image: url('{{article.img}}')">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+  
+                <div class="file-drop bg-light p-5" target-id="ogImg" style="background-image: url('{{article.ogImg}}')">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="form-floating">
+                    <input type="text" value="{{article.name}}" class="form-control" name="name" id="name"/>
+                    <label for="name">Tytuł artykułu</label>
+                </div>
+                <div class="form-floating">
+                    <input type="date" value="{{article.addedDate}}" class="form-control" name="addedDate"/>
+                    <label for="name">Data utworzenia</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" value="{{article.siteLink}}" class="form-control" name="siteLink"/>
+                    <label for="name">Unikalny link artykułu</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" value="{{article.img}}" id="artImg" class="form-control file-input" name="img"/>
+                    <label for="img">Ściezka do zdjęcia artykułu</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" value="{{article.ogImg}}" id="ogImg" class="form-control file-input" name="ogImg"/>
+                    <label for="ogImg">Ściezka do zdjęcia OG artykułu</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" value="{{article.category}}" class="form-control" name="category"/>
+                    <label for="category">Kategoria</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" value="{{article.author}}" class="form-control" name="author"/>
+                    <label for="author">Autor</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" value="{{article.substanceGroup}}" class="form-control" name="substanceGroup"/>
+                    <label for="substanceGroup">Grupa Substancji</label>
+                </div>
+                <div class="form-check">
+                    {{#if article.published}}
+                        <input type="checkbox" name="published" checked class="form-check-input">
+                    {{else}}
+                        <input type="checkbox" name="published" class="form-check-input">
+                    {{/if}}
+                    <label class="form-check-label" for="published">Opublikowany</label>
+                </div>
+                <div class="form-check">
+                    {{#if article.promoted}}
+                        <input type="checkbox" name="promoted" checked class="form-check-input">
+                    {{else}}
+                        <input type="checkbox" name="promoted" class="form-check-input">
+                    {{/if}}
+                    <label class="form-check-label" for="promoted">Promowany</label>
+                </div>
+            </div>
+        </div>
+        <span class="text-muted">Zawartość artykułu</span>
+        <textarea name="intro" cols="30" rows="10" class="form-control">{{article.intro}}</textarea>
+        <h3 class="text-center mt-5">Główny content</h3>
+        <textarea id="article-content" class="form-control tiny" name="content">{{article.content}}</textarea>
+        <h3 class="mt-5 text-center">Źródła</h3>
+        <textarea id="article-sources" class="form-control tiny" name="sources">{{article.sources}}</textarea>
+        <div class="d-flex justify-content-between mt-2">
+            <a href="/{{article.siteLink}}" class="btn btn-primary" target="_blank">
+                Zobacz artykuł od frontu
+            </a>    
+           <input type="submit" class="btn btn-primary" value="Zapisz"/>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.tiny.cloud/1/2hpaar4ztywvlw1dfjq14m2k76b09w1aen6j505h5r8dsag1/tinymce/5/tinymce.min.js"></script>
+
+<script>
+    tinymce.init({
+        selector: '.tiny',
+        plugins: 'code image',
+        toolbar: 'undo redo | link image | code',
+        height: 600,
+        images_upload_url: '/admin/article/upload_image',
+        block_formats: 'Paragraph=p; Header 1=h1; Header 2=h2; Header 3=h3; Div = div'
+    });
+</script>
+
+<script>
+    // file uploader
+
+    const dropZones = document.querySelectorAll('.file-drop');
+
+    dropZones.forEach(dz => {
+        addEventListener('dragenter', function() {
+            dz.classList.add('file-over');
+        })
+    })
+
+    dropZones.forEach(dz => {
+        dz.addEventListener('dragleave', function() {
+            dz.classList.remove('file-over');
+        })
+    })
+
+    dropZones.forEach(dz => {
+        dz.addEventListener('dragover', function(e){
+            e.preventDefault();
+        })
+    })
+
+    dropZones.forEach(dz => {
+        dz.addEventListener('drop', function(e) {
+            e.preventDefault();
+            const fd = new FormData();
+            fd.append('file', e.dataTransfer.files[0]);
+
+            const fileField = document.getElementById(e.target.getAttribute('target-id'));
+
+            fetch('/admin/article/upload_image', {
+                method: "POST",
+                body: fd
+            })
+            .then(res => res.json())
+            .then(res => {
+                fileField.value = res.location;
+            })
+            .catch(err => console.log(err));
+
+            return false;
+        })
+    })
+
+
+</script>

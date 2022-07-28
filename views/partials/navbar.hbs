@@ -1,0 +1,98 @@
+<nav class="py-3 nav">
+  <div class="container navbar-wrapper">
+    <a class="navbar-brand" href="/">
+      <span class="text-secondary"> > LS</span>Drugs
+    </a>
+
+    <form class="search-form d-flex" method="POST" action="/search">
+      <input type="text" class="form-control" name="name" placeholder="Szukana fraza">
+      <input type="submit" class="btn btn-secondary" value="Szukaj">
+    </form>
+
+    <i class="fas fa-search px-3 search-scope"></i>
+
+    <button class="btn toggle-sidebar">
+      <div class="icon-bar"></div>
+      <div class="icon-bar"></div>
+      <div class="icon-bar"></div>
+    </button>
+
+
+    <div class="sidebar">
+      <button class="btn toggle-sidebar">
+        <div class="icon-bar"></div>
+        <div class="icon-bar"></div>
+        <div class="icon-bar"></div>
+      </button>
+
+      <div class="sidebar-logo p-3">
+        > LSDrugs
+      </div>
+
+      <div class="w-100 sidebar-items" style="pointer-events: all;">
+        <a class="sidebar-item" href="/" title="Strona główna">
+          <div class="sidebar-item-image">
+            <i class="fas fa-home"></i>
+          </div>
+          <div class="sidebar-item-text">
+            Strona główna
+          </div>
+        </a>
+        <a class="sidebar-item" href="/category/aktualnosci" title="Aktualności">
+          <div class="sidebar-item-image">
+            <i class="far fa-newspaper"></i>
+          </div>
+          <div class="sidebar-item-text">
+            Aktualności
+          </div>
+        </a>
+        <a class="sidebar-item" href="/category/substancje" title="Substancje">
+          <div class="sidebar-item-image">
+            <i class="fas fa-pills"></i>
+          </div>
+          <div class="sidebar-item-text">
+            Substancje
+          </div>
+        </a>
+
+        <a class="sidebar-item" href="/mixer" title="Mixer">
+          <div class="sidebar-item-image">
+            <i class="fas fa-table"></i>
+          </div>
+          <div class="sidebar-item-text">
+            Nie miksuj!
+          </div>
+        </a>
+        <a class="sidebar-item" href="/lsdrugs" title="O nas">
+          <div class="sidebar-item-image">
+            <i class="fas fa-question"></i>
+          </div>
+          <div class="sidebar-item-text">
+            O nas
+          </div>
+        </a>
+      </div>
+
+      <ol class="sidebar-contact">
+        <li>
+          <a href="https://www.facebook.com/LSDrugs-106356765180519">
+            <i class="fab fa-facebook"></i>
+            LSDrugs
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/lsdrugs_/">
+            <i class="fab fa-instagram-square"></i>
+            LSDrugs_
+          </a>
+        </li>
+        <li>
+          <a href="mailto:lsdrugs.contact@gmail.com">
+            <i class="fas fa-envelope-square"></i>
+            lsdrugs.contact@gmail.com
+          </a>
+        </li>
+      </ol>
+    </div>
+  </div>
+</nav>

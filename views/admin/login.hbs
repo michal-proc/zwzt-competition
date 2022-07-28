@@ -1,0 +1,22 @@
+<div class="d-flex align-items-stretch h-100">
+    <div class="col-12 col-md-3 login-part d-flex align-items-center justify-content-center">
+        <form class="d-flex justify-content-center align-items-center rounded d-flex flex-column p-3 px-5 bg-light rounded m-5" method="POST" action="/admin/login">
+            <div class="icon-in-circle bg-primary mb-2">
+                <i class="fas fa-user"></i>
+            </div>
+            <h6 class="text-uppercase">lsdrugs</h6>
+            <p class="text-danger">{{flash}}</p>
+            <input type="text" class="form-control" placeholder="Login" name="login"/>
+            <input type="password" class="form-control" placeholder="Hasło" name="password" />
+            <input class="btn btn-primary w-100" type="submit" />
+        </form>
+    </div>
+    <div class="col-12 d-none d-md-flex col-md-9 image-part">
+        <div class="partners">
+            <img src="/images/partners/alterkom.jpg" alt="">
+            <img src="/images/partners/krakweb.png" alt="">
+            <img src="/images/partners/mestoslaw.png" alt="">
+            <img src="/images/partners/sin.png" alt="">
+        </div>
+    </div>
+</div>

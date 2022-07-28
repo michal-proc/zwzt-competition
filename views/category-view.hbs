@@ -1,0 +1,16 @@
+{{> navbar}}
+
+<div class="category-image-wrapper">
+    <img src="/uploads/{{categoryRaw}}_category_image.png" alt="{{name}}">
+    <h1 class="category-name">
+        {{name}}
+    </h1>
+</div>
+<main class="container">
+    <div class="row flex-wrap">
+        {{#each articles}}
+        {{> article-tile this}}
+        {{/each}}
+    </div>
+</main>
+{{> footer}}

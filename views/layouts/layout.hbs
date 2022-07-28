@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{seoDescription}}" />
+    <meta property="og:url" content="https://www.lsdrugs.pl/{{slug}}" />
+    <meta property="og:title" content="{{pageTitle}}" />
+    <meta property="og:image" content="https://www.lsdrugs.pl{{ogImage}}" />
+    <meta property="og:description" content="{{ogDescription}}" />
+    <meta name="keywords" content="{{keywords}}" />
+    <link rel="icon" href="/images/favicon-32x32.png">
+
+    <title>{{pageTitle}}</title>
+
+    <link rel="stylesheet" href="/build/css/style.css">
+    <link rel="stylesheet" href="/build/css/aos.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+
+    {{!-- GOOGLE ANALYTICS --}}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4E58R6LKPF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-4E58R6LKPF');
+    </script>
+    {{!-- GOOGLE ANALYTICS --}}
+</head>
+
+<body class="{{contentType}}">
+    {{{ body }}}
+
+
+    <div class="cookies bg-white shadow">
+        <div class="container">
+            <div class="row flex-wrap">
+                <div class="col-12 col-md-9">
+                    <p class="mb-0">
+                        Ta strona korzysta z plików cookie, używamy ich w celu prowadzenia analityki oraz optymalizacji publikowanej treści. 
+                        Możesz określić warunki przechowywania lub dostępu do cookie zmieniając ustawienia w swojej przeglądarce.
+                    </p>
+                </div>
+                <div class="col-12 col-md-3 d-flex justify-content-center align-items-center">
+                    <button class="btn btn-primary ms-auto close-cookies">
+                        Wyrażam zgodę
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="/build/js/frontend/frontend.bundle.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,397 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand';
+}
+
+.main-ep{
+    width: 100vw;
+    height: 100vh;
+    background-color: #012840;
+    position: fixed;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.main-bg-ep{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-image: url("../../images/moonsurface404.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: 2;
+}
+
+.scale-field-ep{
+    transform: translateX(-50%) scale(1.5) ;
+    bottom: 112%;
+}
+
+.planet-ep:hover{
+    transform: scale(1.05);
+}
+
+.planet-ep{
+    transition: 1s;
+    width: 300px;
+    border-radius: 150px;
+    cursor: pointer;
+}
+
+.mainpagediv-ep{
+    position: absolute;
+    top: 10vh;
+    left: 20vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+}
+
+.subpagediv-ep{
+    position: absolute;
+    top: 30vh;
+    left: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+}
+
+.mixpagediv-ep{
+    position: absolute;
+    top: 15vh;
+    left: 60vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+}
+
+.zwzt-ep{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 4;
+    height: 80px;
+}
+
+.logo-ep{
+    position: absolute;
+    width: 1000px;
+    bottom: 200px;
+    height: 300px;
+    z-index: 2;
+}
+
+.logo-ep > svg{
+    position: absolute;
+    width: 500px;
+}
+
+.logo-txt-ep{
+    color: white;
+    font-family: 'Quicksand';
+    position: absolute;
+    z-index: 5;
+    top: 160px;
+    left: 180px;
+}
+
+.logo-txt-ep > h1{
+    font-size: 80px;
+}
+
+.logo-txt-ep > h3{
+    font-size: 30px;
+}
+
+.moving-star-slow{
+    animation: star 6s infinite;
+}
+
+.moving-star-medium{
+    animation: star 4s infinite;
+}
+
+.moving-star-fast{
+    animation: star 2s infinite;
+}
+
+@keyframes star{
+    from, to {transform: translateY(-5px);}
+    50% {transform: translateY(5px);}
+}
+
+@media only screen and (max-height: 900px) {
+    .logo-ep{
+        top: -130px;
+        left: -130px;
+    }
+
+    .mainpagediv-ep{
+        top: 50vh;
+        left: 10vw;
+    }
+
+    .subpagediv-ep{
+        top: 45vh;
+        left: 40vw;
+    }
+
+    .mixpagediv-ep{
+        top: 10vh;
+        left: 60vw;
+    }
+}
+
+@media only screen and (max-width: 1350px){
+    .logo-ep{
+        top: -130px;
+        left: -130px;
+    }
+
+    .mainpagediv-ep{
+        top: 50vh;
+        left: 10vw;
+    }
+
+    .subpagediv-ep{
+        top: 45vh;
+        left: 40vw;
+    }
+
+    .mixpagediv-ep{
+        top: 10vh;
+        left: 60vw;
+    }
+}
+
+@media only screen and (max-width: 1050px){
+    .zwzt-ep{
+        height: 60px;
+    }
+    
+    .planet-ep{
+        width: 200px;
+        border-radius: 100px;
+    }
+
+    .mainpagediv-ep{
+        top: 60vh;
+        left: 10vw;
+    }
+
+    .subpagediv-ep{
+        top: 30vh;
+        left: 20vw;
+    }
+
+    .mixpagediv-ep{
+        top: 20vh;
+        left: 70vw;
+    }
+}
+
+@media only screen and (max-width: 700px){
+    .logo-ep > svg{
+        position: absolute;
+        width: 400px;
+    }
+    
+    .logo-txt-ep{
+        color: white;
+        font-family: 'Quicksand';
+        position: absolute;
+        z-index: 5;
+        top: 140px;
+        left: 160px;
+    }
+
+    .mixpagediv-ep{
+        top: 20vh;
+        left: 60vw;
+    }
+    
+    .logo-txt-ep > h1{
+        font-size: 60px;
+    }
+    
+    .logo-txt-ep > h3{
+        font-size: 20px;
+    }
+    
+    .main-ep{
+        overflow-y: visible;
+    }
+
+    .main-bg-ep{
+
+        bottom: 0;
+        background-size: 200%;
+        overflow-y: visible;
+        background-position-y: 110%;
+        background-position-x: 90%;
+        background-attachment: fixed;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .main-bg-ep{ 
+        background-position-y: 100%;
+    }
+}
+
+
+@media only screen and (max-width: 500px){
+    .planet-ep{
+        width: 150px;
+        border-radius: 75px;
+    }
+
+    .mainpagediv-ep{
+        top: 60vh;
+        left: 10vw;
+    }
+
+    .subpagediv-ep{
+        top: 40vh;
+        left: 55vw;
+    }
+
+    .mixpagediv-ep{
+        top: 30vh;
+        left: 15vw;
+    }
+    
+    .logo-txt-ep > h1{
+        font-size: 50px;
+    }
+    
+    .logo-txt-ep > h3{
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 350px){
+    .zwzt-ep{
+        height: 40px;
+    }
+    
+    .planet-ep{
+        width: 100px;
+        border-radius: 50px;
+    }
+    
+    .logo-txt-ep > h1{
+        font-size: 40px;
+    }
+    
+    .logo-txt-ep > h3{
+        font-size: 15px;
+    }
+}
+
+@media only screen and (orientation: landscape) and (max-height: 750px){
+    .planet-ep{
+        width: 200px;
+        border-radius: 100px;
+    }
+}
+
+@media only screen and (orientation: landscape) and (max-height: 550px){
+    .logo-ep > svg{
+        position: absolute;
+        width: 400px;
+    }
+    
+    .logo-txt-ep{
+        color: white;
+        font-family: 'Quicksand';
+        position: absolute;
+        z-index: 5;
+        top: 140px;
+        left: 160px;
+    }
+    
+    .logo-txt-ep > h1{
+        font-size: 60px;
+    }
+    
+    .logo-txt-ep > h3{
+        font-size: 20px;
+    }
+}
+
+@media only screen and (orientation: landscape) and (max-height: 550px) and (max-width: 1350px){
+    .logo-ep > svg{
+        position: absolute;
+        width: 400px;
+    }
+    
+    .logo-txt-ep{
+        color: white;
+        font-family: 'Quicksand';
+        position: absolute;
+        z-index: 5;
+        top: 140px;
+        left: 160px;
+    }
+
+    .mainpagediv-ep{
+        top: 50vh;
+        left: 5vw;
+    }
+
+    .subpagediv-ep{
+        top: 10vh;
+        left: 55vw;
+    }
+
+    .mixpagediv-ep{
+        top: 30vh;
+        left: 30vw;
+    }
+    
+    .logo-txt-ep > h1{
+        font-size: 60px;
+    }
+    
+    .logo-txt-ep > h3{
+        font-size: 20px;
+    }
+}
+
+@media only screen and (orientation: landscape) and (max-height: 400px) and (max-width: 1350px){
+    .planet-ep{
+        width: 150px;
+        border-radius: 75px;
+    }
+}
+
+@media only screen and (orientation: landscape) and (max-height: 300px) and (max-width: 1350px){
+    .main-bg-ep{
+
+        bottom: 0;
+        background-size: 100%;
+        overflow-y: visible;
+        background-position-y: 110%;
+        background-position-x: 90%;
+        background-attachment: fixed;
+    }
+
+    .logo-ep > svg{
+        position: absolute;
+        width: 300px;
+    }
+
+    .logo-txt-ep > h1{
+        font-size: 40px;
+    }
+    
+    .logo-txt-ep > h3{
+        font-size: 15px;
+    }
+}

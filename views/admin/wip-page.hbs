@@ -1,0 +1,135 @@
+<div class="main-wip">
+
+</div>
+<div class="main-bg-wip">
+    <img class="halfbrain-wip" src="./images/halfbrain.png" alt="">
+    <div class="logo-wip">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#03A66A"
+                d="M41.8,-49.1C56.1,-37.9,70.7,-26.5,74.2,-12.2C77.8,2.1,70.3,19.1,59,29.7C47.7,40.3,32.7,44.4,17.5,51.4C2.3,58.4,-13.1,68.3,-29.7,68.1C-46.4,68,-64.4,57.7,-75.1,42C-85.9,26.2,-89.6,4.9,-84.2,-13C-78.9,-31,-64.6,-45.5,-49.1,-56.5C-33.6,-67.4,-16.8,-74.9,-1.5,-73.1C13.8,-71.3,27.6,-60.3,41.8,-49.1Z"
+                transform="translate(100 100)" />
+        </svg>
+        <div class="logo-txt-wip">
+            <h1>LSDrugs</h1>
+            <h3>We are working on this!</h3>
+        </div>
+    </div>
+</div>
+
+<script>
+    const colors = ["#03a66a", "#f2b022", "#f22233", "#ececec"]
+    const animations = ["moving-star-slow", "moving-star-fast", "moving-star-medium"]
+    const starAmount = 30
+
+    //Grafiki do canvasa
+    let imgClear = new Image()
+    imgClear.src = "./images/astronaut-n.png"
+    let imgI1 = new Image()
+    let imgI2 = new Image()
+    let imgI3 = new Image()
+    let imgI4 = new Image()
+    imgI1.src = "./images/astronaut-i1.png"
+    imgI2.src = "./images/astronaut-i2.png"
+    imgI3.src = "./images/astronaut-i3.png"
+    imgI4.src = "./images/astronaut-i4.png"
+    const frames = [imgI1, imgI2, imgI3, imgI4]
+    let imagesLoaded = 0
+
+    frames.forEach(frame => {
+        frame.onload = () => {
+            imagesLoaded += 1
+        }
+    })
+
+
+    //Generowanie gwiazdek
+    for (let c = 0; c < starAmount; c++) {
+        let randomStar = document.createElement('div')
+        let size = Math.floor(Math.random() * 10 + 1)
+        randomStar.style.width = size + "px"
+        randomStar.style.height = size + "px"
+        randomStar.style.borderRadius = size / 2 + "px"
+        randomStar.style.position = "absolute"
+        randomStar.style.top = Math.floor(Math.random() * 95) + "vh"
+        randomStar.style.left = Math.floor(Math.random() * 95) + "vw"
+        randomStar.style.backgroundColor = colors[Math.floor(Math.random() * 4)]
+        randomStar.setAttribute('class', animations[Math.floor(Math.random() * 3)])
+        document.querySelector('.main-wip').appendChild(randomStar)
+    }
+
+    //Generowanie canvasa
+    let canvas = document.createElement("canvas")
+    canvas.width = 1200
+    canvas.height = 650
+    canvas.setAttribute('class', 'canvas-wip')
+    document.querySelector('.main-bg-wip').appendChild(canvas)
+    let ctx = canvas.getContext('2d')
+    let smallSize = false
+    if (window.innerWidth <= 1650) {
+        smallSize = true
+    }
+
+    //Funkcja do resizu canvasa
+    function checkSize() {
+        if (window.innerWidth <= 1650) {
+            newSize = true
+        } else {
+            newSize = false
+        }
+        if (smallSize != newSize) {
+            smallSize = newSize
+            if (smallSize) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                ctx.drawImage(imgClear, 0, 0, 800, 400)
+            } else {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                ctx.drawImage(imgClear, -50, -100)
+            }
+        }
+    }
+
+    imgClear.onload = () => {
+        if (smallSize) {
+            ctx.drawImage(imgClear, 0, 0, 800, 400)
+        } else {
+            ctx.drawImage(imgClear, -50, -100)
+        }
+        window.onresize = checkSize
+    }
+
+
+    //Animacja spawania
+    function shuffleFrames() {
+        let counter = 0
+
+        let interval = setInterval(function () {
+            if (smallSize) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                ctx.drawImage(frames[Math.floor(Math.random() * frames.length)], 0, 0, 800, 400)
+            } else {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                ctx.drawImage(frames[Math.floor(Math.random() * frames.length)], -50, -100)
+            }
+            if (counter < 15) {
+                counter++
+            } else {
+                clearInterval(interval)
+                if (smallSize) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height)
+                    ctx.drawImage(imgClear, 0, 0, 800, 400)
+                } else {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height)
+                    ctx.drawImage(imgClear, -50, -100)
+                }
+            }
+        }, 30)
+    }
+
+
+    //Odstęp w animacjach spawania
+    let animationInterval = setInterval(() => {
+        if (imagesLoaded == 4) {
+            shuffleFrames()
+        }
+    }, 3000)
+</script>

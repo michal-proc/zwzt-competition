@@ -1,0 +1,4 @@
+node_modules
+static/uploads/*
+db-config.js
+package-lock.json

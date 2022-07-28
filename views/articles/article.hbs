@@ -1,0 +1,72 @@
+{{>navbar}}
+<main class="d-flex flex-wrap whole-article">
+    <div class="col-12 col-md-4 position-relative">
+        <img src="{{article.img}}" class="hero-article-image" alt="{{article.name}}">
+        <div class="overlay">
+            <span>{{article.category}} - {{article.addedDate}}</span>
+            <h1 class="article-title mb-0">
+                {{article.name}}
+            </h1>
+            {{#if article.author}}
+            <div class="d-flex align-items-center">
+                {{article.author}}
+                <div class="article-author">
+                    <img src="/uploads/authors/{{article.author}}.png" class="img-fluid">
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+    <div class="article-content col-12 col-md-8 p-5 pt-0">
+        <h2>{{article.name}}</h2>
+        <p class="article-intro">
+            {{{article.intro}}}
+        </p>
+        <div class="article-content-text">
+            {{{article.content}}}
+        </div>
+
+        {{#if substanceArts}}
+        <h4 class="mt-3">Inne artykuły z kategorii <a href="/category/substancje">substancje</a></h4>
+        <div class="border rounded other-articles-slider position-relative">
+            <div class="swiper-wrapper">
+                {{#each substanceArts}}
+                <div class="slide swiper-slide">
+                    <img src="{{this.img}}" alt="{{this.name}}" class="img-fluid">
+                    <h6 class="text-muted">{{this.category}} - {{this.addedDate}}</h6>
+                    <h4><a href="{{this.siteLink}}">{{this.name}}</a></h4>
+                    <a href="{{this.siteLink}}" class="btn btn-primary">Czytaj</a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+        {{#if article.sources}}
+        <div class="article-sources bg-light rounded p-5 mt-3">
+            <h3>Bibliografia</h3>
+            {{{article.sources}}}
+        </div>
+        {{/if}}
+    </div>
+
+</main>
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.other-articles-slider', {
+        autoplay: true
+    })
+
+    document.querySelectorAll('.tooltipable').forEach(tip => {
+        tip.addEventListener('click', function () {
+            this.classList.toggle('active');
+        })
+    })
+
+    document.querySelectorAll('.tooltip-content').forEach(tip => {
+        tip.addEventListener('click', function () {
+            this.classList.remove('active');
+        })
+    })
+
+</script>

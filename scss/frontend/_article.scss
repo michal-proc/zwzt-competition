@@ -1,0 +1,218 @@
+.hero-article-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.hero-article-image{
+    @media (min-width: 768px) {
+        max-height: calc(100vh - 72px);
+        overflow-y: auto;
+    }
+}
+
+.article-content {
+    overflow-x: hidden;
+    @media (min-width: 768px) {
+        max-height: calc(100vh - 72px);
+        overflow-y: auto;
+    }
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.article-tile{
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.article-tile-image {
+    max-height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.article-tile-intro {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+.article-intro {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .article-intro {
+        font-size: 1rem;
+    }
+}
+
+.slide {
+    position: relative;
+    min-height: 200px;
+    @include flex-both();
+    color: white;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px;
+    flex: 1 0 100%;
+    img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        filter: brightness(0.5);
+        overflow: hidden;
+        border-radius: 5px;
+    }
+
+    h4 a{
+        color: white;
+    }
+}
+
+.other-articles-slider {
+    display: flex;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.swiper-button-next ,.swiper-button-prev {
+    color: white !important;
+}
+
+.tooltipable {
+    position: relative;
+    color: $secondary;
+    cursor: pointer;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.tooltip-content {
+    opacity: 0;
+    transition: .4s;
+    position: absolute;
+    padding: 5px;
+    font-size: 12px;
+    background: $dark;
+    bottom: 150%;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    pointer-events: none;
+    white-space: normal;
+    min-width: 100px;
+
+    &:before {
+        position: absolute;
+        content: '';
+        width: 10px;
+        height: 10px;
+        bottom: -5px;
+        background: $dark;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+    }
+}
+
+@media (min-width: 768px) {
+    .tooltip-content {
+        min-width: 170px;
+    }
+}
+
+.tooltipable {
+    &.active {
+        .tooltip-content{
+            opacity: 1;
+            transition: .4s;
+            pointer-events: all;
+        }
+    }
+}
+
+.category-image-wrapper{
+    width: 100%;
+    height: 300px;
+    background-color: $primary;
+    margin-bottom: 50px;
+    overflow: hidden;
+    position: relative;
+    @include flex-both();
+
+    &:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.4);
+        position: absolute;
+        z-index: 3;
+    }
+
+    img {
+        object-fit: cover;
+        width: 100%;
+        object-position: center;
+    }
+
+    .category-name{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        color: white;
+        z-index: 100;
+    }
+}
+
+.article-author {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-left: 10px;
+    overflow: hidden;
+
+    img {
+        object-fit: cover;
+    }
+}
+
+.article-image-wrapper{
+    position: relative;
+    height: 100%;
+    display: block;
+}
+
+.article-group-flag {
+    background: white;
+    position: absolute;
+    box-shadow: 0 0 28px rgba(0,0,0,0.3);
+    padding: 0 5px 2px 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    left: 20px;
+}

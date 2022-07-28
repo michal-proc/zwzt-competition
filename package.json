@@ -1,0 +1,40 @@
+{
+  "name": "zwzt_drugz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-js": "npx parallel-webpack --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@popperjs/core": "^2.10.1",
+    "aos": "^2.3.4",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^5.1.1",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-handlebars": "^5.3.4",
+    "express-session": "^1.17.2",
+    "gulp": "^4.0.2",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.0.0",
+    "mysql": "^2.18.1",
+    "node-sass": "^6.0.1",
+    "nodemon": "^2.0.12",
+    "session": "^0.1.0"
+  },
+  "devDependencies": {
+    "parallel-webpack": "^2.6.0",
+    "terser-webpack-plugin": "^5.2.4",
+    "webpack": "^5.58.0",
+    "webpack-cli": "^4.9.0"
+  }
+}

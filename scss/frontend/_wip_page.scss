@@ -1,0 +1,226 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main-wip{
+    width: 100vw;
+    height: 100vh;
+    background-color: #012840;
+    position: fixed;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.main-bg-wip{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-image: url("/images/moonsurfacestart.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: 2;
+}
+
+.halfbrain-wip {
+    position: absolute;
+    z-index: 3;
+    left: 20vw;
+    top: 5vh;
+    animation: star 6s infinite;
+}
+
+.zwzt-wip{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 4;
+    height: 80px;
+}
+
+.canvas-wip{
+    position: absolute;
+    left: calc(20vw - 900px);
+    animation: star 6s infinite;
+    z-index: 4;
+}
+
+.logo-wip{
+    position: absolute;
+    width: 500px;
+    top: 100px;
+    left: 55vw;
+    height: 300px;
+    z-index: 4;
+}
+
+.logo-wip > svg{
+    position: absolute;
+}
+
+.logo-txt-wip{
+    color: white;
+    font-family: 'Quicksand';
+    position: absolute;
+    z-index: 5;
+    top: 160px;
+    left: 180px;
+}
+
+.logo-txt-wip > h1{
+    font-size: 100px;
+}
+
+.logo-txt-wip > h3{
+    font-size: 30px;
+}
+
+.moving-star-slow{
+    animation: star 6s infinite;
+}
+
+.moving-star-medium{
+    animation: star 4s infinite;
+}
+
+.moving-star-fast{
+    animation: star 2s infinite;
+}
+
+@keyframes star{
+    from, to {transform: translateY(-5px);}
+    50% {transform: translateY(5px);}
+}
+
+@media only screen and (max-width: 2160px){
+    .main-bg-wip{
+        background-size: auto;
+    }
+}
+
+@media only screen and (max-width: 1650px){
+    .canvas-wip{
+        left: calc(20vw - 600px);
+        top: 40vh;
+    }
+    .halfbrain-wip{
+        top: 45vh;
+        height: 400px;
+        left: calc(20vw - 80px)
+    }
+
+    .logo-wip{
+        width: 500px;
+        height: 300px;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media only screen and (max-width: 700px){
+    .logo-wip{
+        width: 500px;
+        height: 300px;
+        top: -100px;
+        left: 100px;
+    }
+
+    .canvas-wip{
+        left: calc(20vw - 600px);
+        top: 30vh;
+    }
+
+    .halfbrain-wip{
+        top: 35vh;
+        height: 400px;
+        left: calc(20vw - 80px)
+    }
+
+    .logo-txt-wip{
+        z-index: 5;
+        top: 180px;
+        left: 200px;
+    }
+
+    .logo-txt-wip > h1{
+        font-size: 70px;
+    }
+    
+    .logo-txt-wip > h3{
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .zwzt-wip{
+        height: 60px;
+    }
+}
+
+@media (orientation: landscape){
+    @media only screen and (max-height: 800px){
+        .canvas-wip{
+            left: calc(20vw - 600px);
+            top: 20vh;
+        }
+        .halfbrain-wip{
+            top: 25vh;
+            height: 400px;
+            left: calc(20vw - 80px)
+        }
+    
+        .logo-wip{
+            left: calc(100vw - 100px);
+            width: 500px;
+            top: -150px
+        }
+        .logo-txt-wip{
+            z-index: 5;
+            top: 200px;
+            left: -100px;
+        }
+    
+        .logo-txt-wip > h1{
+            font-size: 100px;
+        }
+        
+        .logo-txt-wip > h3{
+            font-size: 30px;
+        }
+    }
+
+    @media only screen and (max-height: 500px){
+        .main-bg-wip{
+            background-position: 50% 80%;
+        }
+        .canvas-wip{
+            left: calc(20vw - 600px);
+            top: -100px;
+        }
+        .halfbrain-wip{
+            top: calc(5vh - 100px);
+            height: 400px;
+            left: calc(20vw - 80px)
+        }
+        .logo-wip{
+            left: calc(100vw - 50px);
+            width: 400px;
+            top: -200px
+        }
+        .logo-txt-wip{
+            z-index: 5;
+            top: 200px;
+            left: 0;
+        }
+    
+        .logo-txt-wip > h1{
+            font-size: 60px;
+        }
+        
+        .logo-txt-wip > h3{
+            font-size: 15px;
+        }
+    }
+}

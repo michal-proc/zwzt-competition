@@ -1,0 +1,16 @@
+{{> navbar}}
+<main class="container">
+    <h1 class="text-center p-3">
+        Wyniki wyszukiwania frazy: <b>{{searchPhrase}}</b>
+    </h1>
+    <div class="row flex-wrap">
+        {{#if articles}}
+            {{#each articles}}
+                {{> article-tile this}}
+            {{/each}}
+        {{else}}
+            <h4 class="text-center text-muted">Przykro nam, nie znaleźliśmy nic takiego... Może zasugerujesz nam ten temat <a href="/#contact" class="text-primary">formularzem kontaktowym?</a></h4>
+        {{/if}}
+    </div>
+</main>
+{{> footer}}

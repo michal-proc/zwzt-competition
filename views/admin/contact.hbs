@@ -1,0 +1,14 @@
+{{> admin/admin-navbar}}
+<div class="container d-flex flex-wrap">
+    {{#each messages}}
+        <div class="p-1 col-12 col-md-4">
+            <div class="card p-3 shadow rounded my-2">
+                <p><b>{{this.author}}</b> - <span class="text-muted">{{{makeDateFromTs this.messageDate}}}</span></p>
+                <p>{{this.message}}</p>
+                <div>
+                    <a href="/admin/contact/delete/{{this.id}}" class="btn btn-danger">Usuń</a>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>

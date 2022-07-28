@@ -1,0 +1,510 @@
+@keyframes bounce {
+    0%{
+        transform: translateY(0);
+    }50%{
+        transform: translateY(-10px);
+    }100%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes smallerBounce {
+    0%{
+        transform: translateY(0);
+    }50%{
+        transform: translateY(-5px);
+    }100%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounceSides {
+    0%{
+        transform: translateX(0);
+    }50%{
+        transform: translateX(11px);
+    }100%{
+        transform: translateX(0);
+    }
+}
+
+body{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.about-us{
+    position: relative;
+    height: 500px;
+}
+
+.side-blob{
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-height: 100%;
+    overflow: visible;
+    height: 500px;
+    width: 50%;
+    background-image: url('/images/blob.svg');
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-size: cover;
+    flex-direction: column;
+}
+
+.side-worker{
+    width: 50%;
+    position: absolute;
+    right: 0;
+    height: 500px;
+}
+
+.worker-image{
+    max-height: 60%;
+    filter: drop-shadow(30px 10px 4px rgba(0,0,0,.1));
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.hero {
+    // background-image: linear-gradient(-45deg, $secondary, $primary 90%);
+    background: $blue;
+    height: calc(90vh - 72px);
+    overflow: hidden;
+}
+
+.mainpage-section{
+    padding: 60px 0;
+    position: relative;
+}
+
+.interactive-hero{
+    position: relative;
+}
+
+.star{
+    position: absolute;
+}
+
+.small-star{
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    animation: smallerBounce 1.8s linear infinite;
+}
+
+.medium-star{
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    animation: bounceSides 1.8s linear infinite;
+}
+
+.big-star{
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    animation: bounce 1.8s linear infinite;
+}
+
+.moon-surface-top{
+    object-fit: cover;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.moon-surface-bottom{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    position: relative;
+    background-color: $blue
+}
+.hero-maintext{
+    position: relative;
+    font-size: 100px;
+    font-weight: bold;
+    z-index: 13;
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .hero-maintext {
+        font-size: 70px;
+    }
+}
+
+.blob-bg{
+    position: relative;
+    z-index: 15;
+    height: 100%;
+}
+
+.blob-svg{
+    position: absolute;
+    top: 45%;
+    left: 40%;
+    transform: translate(-50%,-50%);
+    z-index: 12;
+    height: 700px;
+    min-width: 100%;
+}
+
+.hero-subtext{
+    position: relative;
+    z-index: 13;
+    color: white;
+    padding-left: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+@media(max-width: 1000px) and (orientation: portrait){
+    .blob-svg{
+        height: 500px;
+        left: 10%
+    }
+
+    .blob-bg{
+        position: absolute;
+        top: -35%;
+        left: 5%;
+    }
+
+    .hero-maintext{
+        font-size: 50px;
+    }
+
+    .hero-subtext{
+        font-size: 15px;
+        max-width: 300px;
+    }
+}
+
+@media(max-height: 600px) and (orientation: landscape){
+    .blob-svg{
+        height: 400px;
+        left: 30%;
+    }
+    
+
+    .hero-maintext{
+        font-size: 60px;
+    }
+
+    .hero-subtext{
+        font-size: 20px;
+    }
+
+}
+
+
+@media(max-width: 800px)and (orientation: landscape){
+    .blob-svg{
+        height: 400px;
+        left: 30%;
+    }
+
+    .hero-maintext{
+        font-size: 40px;
+    }
+
+    .hero-subtext{
+        font-size: 15px;
+    }
+}
+
+h2{
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.comet{
+    position: absolute;
+    z-index: 14;
+}
+
+@media(max-width: 1000px) and (orientation: portrait){
+    .comet{
+        left: 50%;
+    }
+}
+
+.moon-bg{
+    background-image: url('/images/herosection/moonbg.png');
+    background-size: cover;
+}
+
+
+.flex-both-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.big-padding-top{
+    padding-top: 100px;
+}
+
+.video-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.video-drips{
+    width: 100%;
+}
+
+.red-brain{
+    position: relative;
+    z-index: 15;
+    padding-bottom: 50px;
+    animation: bounce 4s linear infinite;
+    height: 75%;
+    max-height: 550px;
+    cursor: pointer;
+}
+
+
+@media(max-width: 1000px) and (orientation: portrait){
+    .red-brain{
+        margin-top: 100px;
+        height: 60%;
+    }
+
+    #hero-wrapper{
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 400px) and (orientation: portrait){
+    .red-brain{
+        height: 50%;
+    }
+}
+
+@media(max-height: 600px) and (orientation: landscape){
+
+    .red-brain{
+       height: 60%;
+    }
+}
+
+@media(max-width: 1000px) and (orientation: landscape){
+    .brain-column{
+        width: 50%;
+        height: calc(100vh - 72px);
+    }
+
+    .blob-bg{
+        width: 50%
+    }
+}
+
+
+.desc-text{
+    position: relative;
+    z-index: 1001;
+}
+
+.brain-column {
+    position: relative;
+    z-index: 1000;
+}
+
+.field-wrapper {
+    position: relative;
+}
+
+.field-info {
+    width: 50%;
+    background-color: white;
+    border: 1px solid $light;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    align-items: center;
+
+    &:before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        left: 50%;
+        top: calc(100% - 10px);
+        transform: translateX(-50%) rotate(45deg);
+        background-color: white;
+        border-right: 1px solid $light;
+        border-bottom: 1px solid $light;
+        z-index: -1;
+    }
+
+    i{
+        padding-right: 10px;
+    }
+
+}
+
+.thank-you-box{
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    z-index: 1500;
+    top: 50%;
+    left: 50%;
+    box-shadow: 0 0 15px rgba(0,0,0,.4);
+    border-radius: 5px;
+    background-color: white;
+
+    p,h4{
+        text-align: center;
+    }
+}
+
+main {
+    flex: 1;
+}
+
+.xd {
+    display: none;
+}
+
+@keyframes brainbounce {
+    0% {
+        transform: scale(1);
+    } 50% {
+        transform: scale(0.95);
+    } 100% {
+        transform: scale(1);
+    }
+}
+
+.brain-bounce {
+    animation: brainbounce .5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .pill {
+        flex-direction: row-reverse;
+    }
+
+    .perspective-cards .mixer-result {
+        transform: none;
+    }
+}
+
+.waves{
+    position: relative;
+    z-index: 10;
+    top: -1px;
+    width: 102%;
+}
+
+// .waves {
+//     background-color: $light;
+// }
+
+.top-minus {
+    position: relative;
+    top: -1px;
+}
+
+.mix-tile {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+}
+
+.mix-tile-name {
+    grid-row: 1;
+    grid-column: 1/3;
+    text-align: left;
+}
+
+.mix-tile-icon {
+    grid-row: 1;
+    grid-column: 3/4;
+    justify-content: end;
+}
+
+.mix-tile-content {
+    grid-row: 2;
+    grid-column: 1/4;
+    text-align: left;
+}
+
+.mix-tile-icon-badge {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    color: white;
+    margin: 0;
+    @include flex-both();
+}
+
+input, select {
+    -webkit-appearance: none !important;
+}
+
+.content {
+    overflow-x: hidden;
+}
+
+.footer-partner{
+    position: relative;
+    
+    &-image{
+        @include flex-both();
+        height: 100%;
+        background-color: white;
+        border-radius: .25rem;
+        padding: 5px 10px;
+        max-width: 100px;
+
+        img {
+            max-height: 65px;
+            width: 100%;
+        }
+    }
+
+    & + & {
+        margin-left: 10px;
+    }
+
+    .sin-image {
+        width: 100%;
+    }
+
+    .sin-wrapper{
+        padding: 0;
+        width: 120px;
+        max-width: 120px;
+    }
+}

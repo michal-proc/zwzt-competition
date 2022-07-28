@@ -1,0 +1,160 @@
+{{> navbar}}
+
+<main class="container py-3 my-3">
+    <div class="row align-items-stretch">
+        <div class="col-12 col-md-6 ">
+            <h1 class="h3">
+                Zdarza Ci się mieszać? - połączenia substancji.
+            </h1>
+            <p style="text-align: justify;">
+                Połączenie różnych substancji może dać tragiczne w skutkach efekty. Korzystając z tej strony
+                możesz sprawdzić, które połączenia są najgroźniejsze dla zdrowia lub życia człowieka.
+            </p>
+
+            <p style="text-align: justify;">
+                Wybierz substancję z listy, aby sprawdzić niebezpieczne połączenia.
+            </p>
+            <div class="bg-light p-3 rounded mb-3">
+                <h4>Legenda</h4>
+                <div class="row flex-wrap py-2">
+                    <div class="d-flex col-12 col-md-6 col-lg-4 py-1">
+                        <div class="mixer-icon icon-high-risk">
+                            <i class="fas fa-skull"></i>
+                        </div>
+                        <span class="ms-2">Zagrożenie życia i zdrowia</span>
+                    </div>
+
+                    <div class="d-flex col-12 col-md-6 col-lg-4 py-1">
+                        <div class="mixer-icon icon-medium-risk">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <span class="ms-2">Wysokie ryzyko</span>
+                    </div>
+
+                    <div class="d-flex col-12 col-md-6 col-lg-4 py-1">
+                        <div class="mixer-icon icon-risk">
+                            <i class="fas fa-exclamation"></i>
+                        </div>
+                        <span class="ms-2">Ryzyko</span>
+                    </div>
+                </div>
+            </div>
+            <p>
+                Strona została opracowana w oparciu o:
+                <ul>
+                    <li>
+                        tabelkę dostępną na stronie <a href="https://wiki.tripsit.me/images/3/3a/Combo_2.png" target="_blank">tripsit.me</a>
+                    </li>
+                    <li>
+                        tabelkę dostępną na stronie <a href="https://sin.org.pl/substancje/mieszanki/" target="_blank">sin.org.pl</a>
+                    </li>
+                </ul>
+            </p>
+        </div>
+        <div class="col-12 col-md-6">
+            <h3>Mixer</h3>
+
+            <h5>Szukana substancja:</h5>
+            <select id="first-mixer" class="form-control form-select mb-3">
+                <option value="">-- WYBIERZ --</option>
+                {{#each mixer}}
+                <option value="{{this.name}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+
+            <div class="d-flex justify-content-center flex-column" id="result">
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
+{{> footer}}
+
+<script>
+    const data = {{{ json mixer }}};
+
+    const preselectedSubstance = "{{substance}}";
+
+    const resultBox = document.getElementById('result');
+    const select = document.getElementById('first-mixer');
+
+    let firstSubstance = '';
+    let secondSubstance = '';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        select.addEventListener('change', (e) => {
+            renderMixes(e);
+        })
+    })
+
+    if (preselectedSubstance) {
+        const options = select.querySelectorAll('option');
+        let possible = 0;
+
+        options.forEach(option => {
+            if (option.value == preselectedSubstance)
+                possible = 1;
+        })
+
+        if (possible) {
+            renderMixes(null, preselectedSubstance);
+            select.value = preselectedSubstance;
+        }
+    }
+
+    function renderMixes(e, preselectedSubstance = null) {
+        resultBox.innerHTML = "";
+        if (preselectedSubstance) {
+            firstSubstance = preselectedSubstance;
+        } else {
+            firstSubstance = e.target.value;
+        }
+
+        const matched = data.map(row => ({
+            name: row.name,
+            result: row[firstSubstance]
+        })).sort((a, b) => matchedSort(a, b)).filter(item => item.result > 3);
+
+        if (matched.length > 0) {
+            resultBox.innerHTML = '<h5>Niebezpieczne połączenia:</h5>';
+        } else {
+            resultBox.innerHTML = '<div class="text-muted d-flex align-items-center justify-content-center">Wybierz substancję z listy.</div>'
+        }
+
+        matched.forEach(result => {
+            const div = document.createElement('div');
+            div.classList.add('mixer-result');
+            let iconClass = '';
+            let icon = '';
+
+            if (result.result == 6) {
+                iconClass = "icon-high-risk";
+                icon = '<i class="fas fa-skull"></i>';
+            } else if (result.result == 5) {
+                iconClass = "icon-medium-risk";
+                icon = '<i class="fas fa-exclamation-triangle"></i>';
+            } else {
+                iconClass = "icon-risk";
+                icon = '<i class="fas fa-exclamation"></i>';
+            }
+
+            div.innerHTML = `<div class="mixer-name">
+                ${firstSubstance} + ${result.name}
+            </div>
+            <div class="mixer-icon ${iconClass}">
+                ${icon}
+            </div>`;
+
+            resultBox.appendChild(div);
+        })
+    }
+
+    function matchedSort(a, b) {
+        if (a.result > b.result) return -1;
+        if (a.result < b.result) return 1;
+        if (a.name > b.name) return 1;
+        if (a.name < b.name) return -1;
+    }
+</script>

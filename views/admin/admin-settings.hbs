@@ -1,0 +1,17 @@
+{{> admin/admin-navbar}}
+
+<div class="container mt-3">
+  <div class="bg-light p-3 rounded">
+      <h2>Inne ustawienia</h2>
+      <form method="POST" action="/admin/settings">
+          {{#each settings}}
+            <p>
+                {{name}}
+            </p>
+            <textarea class="form-control" name="{{name}}">{{val}}</textarea>
+          {{/each}}
+          <input type="submit" class="btn btn-primary mt-3" value="Zapisz">
+      </form>
+  </div>
+
+</div>
